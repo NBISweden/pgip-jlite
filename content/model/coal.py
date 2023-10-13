@@ -134,6 +134,7 @@ def add_mutations(tree, mutations):
         if n == tree.mrca:
             continue
         tree.nodes[i].mutations = mutations[n.label]
+    return tree
 
 
 def make_tree(ancestors, branches):
