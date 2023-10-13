@@ -256,7 +256,10 @@ CoalescentHandson:
 MsprimeSimulations:
   tskit_tables:
     - question: >-
-        What is the age of the MRCA? Answer with three decimal places.
+        Browse through the output of dir(ts) and see if you can find
+        an attribute that corresponds to node times. What is the age
+        of the most recent common ancestor (MRCA)? Answer with three
+        decimal places.
       type: numeric
       answers:
         - type: value
@@ -264,11 +267,65 @@ MsprimeSimulations:
           value: 3.835
           feedback: >-
             Correct! You can get the value by typing
-            <tt>max(ts.nodes_time)</tt>.
+            max(ts.nodes_time) or ts.max_root_time.
         - type: default
           feedback: >-
-            Try again! Hint: browse through the functions and look for
-            a property that provides access to the node times.
+            Try again! Hint: look for attributes that end with _time.
+  mutation_site:
+    - question: >-
+        What is the ancestral state of the mutation with id=0?
+      type: many_choice
+      answers:
+        - answer: "A"
+          correct: false
+          feedback: >-
+            Hint: print the sites table and look for the site that
+            corresponds to the mutation.
+        - answer: "G"
+          correct: false
+          feedback: >-
+            Hint: print the sites table and look for the site that
+            corresponds to the mutation.
+        - answer: "T"
+          correct: false
+          feedback: >-
+            Hint: print the sites table and look for the site that
+            corresponds to the mutation.
+        - answer: "C"
+          correct: true
+          feedback: >-
+            Correct! Mutation 0 is placed on the site with id=0, so to
+            get the ancestral state, print the sites table
+            (mutated_ts.tables.sites). In fact, all mutations are
+            placed on site 0, for the simple reason that we still
+            haven't told msprime anything about the length of the
+            simulated sequence.
+  individual_node:
+    - question: >-
+        To which individual does node 3 belong?
+      type: numeric
+      answers:
+        - type: value
+          correct: true
+          value: 1
+          feedback: >-
+            Correct! Node 3 (and 2) belong to individual 1.
+        - type: default
+          feedback: >-
+            Try again! Hint: print the nodes table.
+    - question: >-
+        To which individual does node 4 belong?
+      type: numeric
+      answers:
+        - type: value
+          correct: true
+          value: -1
+          feedback: >-
+            Correct! Ancestral nodes belong to individuals with id -1,
+            meaning they are not part of the sampled individuals.
+        - type: default
+          feedback: >-
+            Try again! Hint: print the nodes table.
   recombination:
     - question: >-
         At what position has the second recombination taken place?
