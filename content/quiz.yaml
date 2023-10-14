@@ -136,7 +136,7 @@ CoalescentHandson:
       answers:
         - type: value
           correct: true
-          range: 3.33
+          value: 3.33
           feedback: >-
             Correct. $\theta$ can be expressed as
             $\theta=\frac{2S}{T}=\frac{2*5}{3}$.
